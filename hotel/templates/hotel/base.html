@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Hotel Booking Website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color:#4DB6AC;">
+<nav class="navbar navbar-light" style="background-color:#FF0033;">
+    <a href="#" class="navbar-brand" style="background-color:#FFCC33;color:#000000;border-width:10px;border-color:#FFCC33;border-style:solid;border-spacing:30px;border-radius: 5px;">
+        Hotel Booking Website </a>
+
+    <a href="{% url 'admin:index' %}" class='navbar-link btn-lg'
+       style="background-color:#FFCC33;color:#000000;">Admin</a>
+    <a href="{% url 'upload-hotel' %}" class="navbar-link btn-lg" style="background-color:#FFCC33;color:#000000;">Add
+        Hotel</a>
+</nav>
+<br>
+{% block content %}
+    <div class="card-columns">
+        {% for hotel in shelf %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ hotel.picture.url }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ hotel.hotelname }}</h5>
+
+                    <div class="card-footer bg-transparent border-dark">
+
+                        <center>
+                            <a href="update/{{ hotel.hotelid }}" class="btn btn-warning" id='{{hotel.hotelid }}'>edit</a>
+                            <a href="delete/{{ hotel.hotelid }}" class="btn btn-danger" id='{{hotel.hotelid }}'>delete</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+</body>
+</html>
