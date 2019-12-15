@@ -11,7 +11,10 @@ from django.db import models
 class Hotel(models.Model):
     hotelid = models.IntegerField(db_column='HotelID', primary_key=True)  # Field name made lowercase.
     hotelname = models.CharField(db_column='HotelName', max_length=20, blank=True,
-                                 null=True)  # Field name made lowercase.
+                                 null=True)
+    hotelimage=models.ImageField(upload_to='images/')
+
+
 
     class Meta:
         managed = False
