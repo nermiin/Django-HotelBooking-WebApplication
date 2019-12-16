@@ -10,7 +10,6 @@ from django.utils.html import format_html
 from django.contrib import admin
 
 
-
 class Hotel(models.Model):
     hotelid = models.IntegerField(db_column='HotelID', primary_key=True)  # Field name made lowercase.
     hotelname = models.CharField(db_column='HotelName', max_length=20, blank=True,
@@ -52,9 +51,10 @@ class Guest(models.Model):
 
 
 class Hotelemployee(models.Model):
-    hotel_hotelid = models.IntegerField(db_column='Hotel_HotelID', blank=True, null=True)  # Field name made lowercase.
+    hotel_hotelid = models.IntegerField(db_column='Hotel_HotelID',null=False, blank=True, primary_key=True)  # Field name made lowercase.
     employee_employeeid = models.BigIntegerField(db_column='Employee_EmployeeID', blank=True,
                                                  null=True)  # Field name made lowercase.
+
 
     class Meta:
         managed = False
@@ -101,8 +101,8 @@ class Reservationdetail(models.Model):
 
 
 class Reservationpromo(models.Model):
-    promo_promoid = models.BigIntegerField(db_column='Promo_PromoID', blank=True,
-                                           null=True)  # Field name made lowercase.
+    promo_promoid = models.BigIntegerField(db_column='Promo_PromoID', blank=True,primary_key=True,
+                                           null=False)  # Field name made lowercase.
     reservation_reservationid = models.BigIntegerField(db_column='Reservation_ReservationID', blank=True,
                                                        null=True)  # Field name made lowercase.
 
@@ -118,6 +118,9 @@ class Room(models.Model):
     hotel_hotelid = models.IntegerField(db_column='Hotel_HotelID', blank=True, null=True)  # Field name made lowercase.
 
 
+    class Meta:
+        managed = False
+        db_table = 'room'
 
 class Roomrate(models.Model):
     roomrateid = models.BigIntegerField(db_column='RoomRateID', primary_key=True)  # Field name made lowercase.
@@ -142,8 +145,8 @@ class Roomreservation(models.Model):
 
 
 class Roomreservationguest(models.Model):
-    guest_guestid = models.BigIntegerField(db_column='Guest_GuestID', blank=True,
-                                           null=True)  # Field name made lowercase.
+    guest_guestid = models.BigIntegerField(db_column='Guest_GuestID', blank=True,primary_key=True,
+                                           null=False)  # Field name made lowercase.
     roomreservation_roomreservationid = models.BigIntegerField(db_column='RoomReservation_RoomReservationID',
                                                                blank=True, null=True)  # Field name made lowercase.
 
