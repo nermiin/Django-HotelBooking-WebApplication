@@ -6,15 +6,19 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.utils.html import format_html
+from django.contrib import admin
+
 
 
 class Hotel(models.Model):
     hotelid = models.IntegerField(db_column='HotelID', primary_key=True)  # Field name made lowercase.
     hotelname = models.CharField(db_column='HotelName', max_length=20, blank=True,
                                  null=True)
-    hotelimage=models.ImageField(upload_to='images/')
+    hotelimage = models.ImageField(upload_to='images/')
 
-
+    def Hotel_show(self):
+        return (self.hotelname)
 
     class Meta:
         managed = False
@@ -113,9 +117,6 @@ class Room(models.Model):
                                                    null=True)  # Field name made lowercase.
     hotel_hotelid = models.IntegerField(db_column='Hotel_HotelID', blank=True, null=True)  # Field name made lowercase.
 
-    class Meta:
-        managed = False
-        db_table = 'room'
 
 
 class Roomrate(models.Model):
