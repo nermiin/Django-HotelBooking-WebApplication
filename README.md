@@ -22,3 +22,6 @@ Tasarlanan veritabanında müşteriler, oteller, odalar, rizervasyonlar, otelde 
 
 ### Use Case Diagramı 
 ![Use Case Diagram](https://github.com/nermiin/hotelbooking/blob/master/images/use_case.png)
+
+### Crow's foot Diagramı
+![Crow's Foot Diagram](https://github.com/nermiin/hotelbooking/blob/master/images/VB.png)
