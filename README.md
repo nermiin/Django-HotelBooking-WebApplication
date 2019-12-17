@@ -20,5 +20,5 @@ Tasarlanan veritabanında müşteriler, oteller, odalar, rizervasyonlar, otelde 
 +	hotelemployee ( Hotel_HotelID: mediumint, Employee_EmployeeID: bigint)
 +	employee ( EmployeeID: bigint, FirstName: varchar(45), LastName: varchar(45))
 
-<h3>Use Case Diagramı :</h3>
+### Use Case Diagramı 
 ![Use Case Diagram](https://github.com/nermiin/hotelbooking/blob/master/images/use_case.png)
